@@ -1,6 +1,7 @@
 /* 
  * Package Imports
 */
+const session = require("express-session");
 
 const path = require("path");
 require("dotenv").config();
@@ -38,7 +39,11 @@ app.set('view engine', 'ejs');
 app.use(partials());
 app.use(express.json());
 app.use(express.static(__dirname + '/public'));
-
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUnitialized: false
+}));
 
 
 
