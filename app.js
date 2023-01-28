@@ -99,7 +99,7 @@ app.get('/auth/github', passport.authenticate(
  * Listener
 */
 
-app.listen(PORT, () => console.log(`Listening on ${PORT}: http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Listening on ${PORT}.\nSee the main page at http://localhost:${PORT}`));
 
 /*
  * ensureAuthenticated Callback Function
