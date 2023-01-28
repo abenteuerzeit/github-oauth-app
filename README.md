@@ -14,7 +14,7 @@ This is a sample Node.js application that demonstrates how to authenticate users
         GITHUB_AUTH_CALLBACK_URL="http://localhost:3000/auth/github"
         SESSION_SECRET="keyboard cat" # example secret for signing the session ID cookie
 
-5. Run the application using node app.js
+5. Run the application using `node app.js`
 6. Open a web browser and navigate to <http://localhost:3000> to see the application in action
 
 ## Features
