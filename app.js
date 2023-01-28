@@ -9,7 +9,7 @@ const path = require("path");
 require("dotenv").config();
 const express = require('express');
 const partials = require('express-partials');
-
+const morgan = require('morgan');
 
 const app = express();
 
@@ -62,7 +62,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use(morgan('dev'));
 
 /*
  * Routes
@@ -99,7 +99,7 @@ app.get('/auth/github', passport.authenticate(
  * Listener
 */
 
-app.listen(PORT, () => console.log(`Listening on ${PORT}`));
+app.listen(PORT, () => console.log(`Listening on ${PORT}: http://localhost:${PORT}`));
 
 /*
  * ensureAuthenticated Callback Function
