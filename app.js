@@ -2,6 +2,8 @@
  * Package Imports
 */
 const session = require("express-session");
+const passport = require("passport");
+const GitHubStrategy = require('passport-github2').Strategy;
 
 const path = require("path");
 require("dotenv").config();
@@ -19,13 +21,21 @@ const app = express();
 const PORT = 3000;
 const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
 const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
+const SESSION_SECRET = process.env.SESSION_SECRET;
+const GITHUB_AUTH_CALLBACK_URL = process.env.GITHUB_AUTH_CALLBACK_URL;
 
 /*
  * Passport Configurations
 */
-
-
-
+passport.use(new GitHubStrategy({
+  clientID: GITHUB_CLIENT_ID,
+  clientSecret: GITHUB_CLIENT_SECRET,
+  callbackURL: GITHUB_AUTH_CALLBACK_URL,
+},
+  function (accessToken, refreshToken, profile, done) {
+    return done(null, profile);
+  }
+));
 
 
 
@@ -40,11 +50,12 @@ app.use(partials());
 app.use(express.json());
 app.use(express.static(__dirname + '/public'));
 app.use(session({
-  secret: process.env.SESSION_SECRET,
+  secret: SESSION_SECRET,
   resave: false,
   saveUnitialized: false
 }));
-
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 /*
