@@ -7,7 +7,7 @@ This is a sample Node.js application that demonstrates how to authenticate users
 1. Clone this repository
 2. Run `npm install` to install the dependencies
 3. Create a new GitHub OAuth application from your GitHub settings. You can find more information on how to do this here
-4. Create a `.env` file in the root directory (see [.env.example](./.env.example) for an example with the required environment variables))):
+4. Create a `.env` file in the root directory (see [.env.example](./.env.example) for an example with the required environment variables):
 
         GITHUB_CLIENT_ID="" # your GitHub client ID, see .env.example
         GITHUB_CLIENT_SECRET="" # your GitHub client secret, see .env.example
